@@ -1,0 +1,50 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.gitter">
+
+  <includeDependencies package="." />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package=".browser" />
+  <include file="upgrades.zcml" />
+
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.gitter"
+      directory="profiles/default"
+      description="Installs the collective.gitter add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="collective.gitter-postInstall"
+      title="collective.gitter post_install import step"
+      description="Post install import step from collective.gitter"
+      handler=".setuphandlers.post_install">
+  </genericsetup:importStep>
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.gitter"
+      directory="profiles/uninstall"
+      description="Uninstalls the collective.gitter add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="collective.gitter-uninstall"
+      title="collective.gitter uninstall import step"
+      description="Import step run during ininstalling collective.gitter"
+      handler=".setuphandlers.uninstall">
+  </genericsetup:importStep>
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.gitter-hiddenprofiles" />
+
+</configure>

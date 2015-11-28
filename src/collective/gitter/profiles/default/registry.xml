@@ -1,0 +1,7 @@
+<registry>
+
+<records 
+      interface="collective.gitter.browser.controlpanel.IGitterControlPanel"
+      prefix="gitter" >
+</records>
+</registry>

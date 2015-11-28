@@ -1,0 +1,36 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.gitter">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="collective.gitter.interfaces.ICollectiveGitterLayer"
+      />
+
+  <!-- Publish static files -->
+  <browser:resourceDirectory
+      name="collective.gitter"
+      directory="static"
+      />
+      
+  <browser:viewlet
+    name="sidecar_gitter"
+    for="*"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+    class=".viewlets.GitterViewlet"
+    template="sidecar.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="gitter-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    permission="cmf.ManagePortal"
+    class=".controlpanel.GitterControlPanelView"
+ />
+
+</configure>

@@ -1,0 +1,5 @@
+====================
+collective.gitter
+====================
+
+User documentation
