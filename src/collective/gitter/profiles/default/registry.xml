@@ -2,6 +2,9 @@
 
 <records 
       interface="collective.gitter.browser.controlpanel.IGitterControlPanel"
-      prefix="gitter" >
+      prefix="sidecar_gitter" >
+      <value key="show_sidecar">True</value>
+      <value key="show_on_all_pages">False</value>
+      <value key="gitter_room"></value>
 </records>
 </registry>

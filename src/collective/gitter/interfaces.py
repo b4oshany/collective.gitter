@@ -4,9 +4,10 @@
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope import schema
 from zope.interface import Interface
+from plone.directives import form
 
 
-class IGitterControlPanel(Interface):
+class IGitterControlPanel(form.Schema):
 
     show_sidecar = schema.Bool(
         title=u'Show gitter chatbox.',
@@ -19,7 +20,7 @@ class IGitterControlPanel(Interface):
         default=False,
         required=False,
     )
-    gitter_room = schema.Text(
+    gitter_room = schema.TextLine(
         title=u'Gitter room name',
         required=False,
     )
